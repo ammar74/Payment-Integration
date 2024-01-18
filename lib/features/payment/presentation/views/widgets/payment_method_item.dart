@@ -13,33 +13,36 @@ class PaymentMethodItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 600),
-      width: 120,
-      height: 75,
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-              width: 1.50,
-              color: isActive ? const Color(0xFF34A853) : Colors.grey.shade700),
-          borderRadius: BorderRadius.circular(15),
+    return Padding(
+      padding: const EdgeInsets.only(right: 16.0),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        width: 105,
+        height: 65,
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+                width: 1.50,
+                color:
+                    isActive ? const Color(0xFF34A853) : Colors.grey.shade700),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          shadows: [
+            BoxShadow(
+              color: isActive ? const Color(0xFF34A853) : Colors.white,
+              blurRadius: 4,
+              offset: const Offset(0, 0),
+              spreadRadius: 0,
+            )
+          ],
         ),
-        shadows: [
-          BoxShadow(
-            color: isActive ? const Color(0xFF34A853) : Colors.white,
-            blurRadius: 4,
-            offset: const Offset(0, 0),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.white),
-        child: Center(
-          child: SvgPicture.asset(
-            image,
-            height: 48,
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: Colors.white),
+          child: Center(
+            child: SvgPicture.asset(
+              image,
+            ),
           ),
         ),
       ),

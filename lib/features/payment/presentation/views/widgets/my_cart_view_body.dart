@@ -22,28 +22,28 @@ class MyCartViewBody extends StatelessWidget {
           ),
           const OrderInfoItem(
             title: 'Order Subtotal',
-            value: '\$ 42.97',
+            value: '42.97 \$',
           ),
           const SizedBox(
             height: 3,
           ),
           const OrderInfoItem(
             title: 'Discount',
-            value: '\$ 0',
+            value: '0 \$',
           ),
           const SizedBox(
             height: 3,
           ),
           const OrderInfoItem(
             title: 'Shipping',
-            value: '\$ 8',
+            value: '8 \$',
           ),
           const Divider(
             thickness: 2,
             height: 34,
             color: Color(0xffC7C7C7),
           ),
-          const TotalPrice(value: '\$ 50'),
+          const TotalPrice(value: '50 \$'),
           const SizedBox(
             height: 16,
           ),

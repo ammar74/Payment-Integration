@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:payment/features/payment/presentation/views/widgets/payment_method_item.dart';
+import 'package:payment/features/payment/presentation/views/widgets/custom_button.dart';
+import 'package:payment/features/payment/presentation/views/widgets/custom_credit_card.dart';
+import 'package:payment/features/payment/presentation/views/widgets/payment_methods_list_view.dart';
 
 class PaymentDetailsViewBody extends StatelessWidget {
   const PaymentDetailsViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+    return const SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          PaymentMethodsListView(),
+          CustomCreditCard(),
           SizedBox(
-            height: 25,
+            height: 24,
           ),
-          PaymentMethodItem(
-            image: 'assets/images/card.svg',
-            isActive: false,
-          ),
+          CustomButton(text: 'Pay')
         ],
       ),
     );
