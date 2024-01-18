@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment/features/payment/presentation/views/payment_details_view.dart';
-import 'package:payment/features/payment/presentation/views/widgets/custom_button.dart';
+import 'package:payment/core/widgets/custom_button.dart';
 import 'package:payment/features/payment/presentation/views/widgets/order_info_item.dart';
 import 'package:payment/features/payment/presentation/views/widgets/total_price.dart';
 

@@ -1,25 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:payment/features/payment/presentation/views/widgets/custom_button.dart';
+import 'package:payment/core/widgets/custom_button.dart';
 import 'package:payment/features/payment/presentation/views/widgets/custom_credit_card.dart';
 import 'package:payment/features/payment/presentation/views/widgets/payment_methods_list_view.dart';
 
-class PaymentDetailsViewBody extends StatelessWidget {
+class PaymentDetailsViewBody extends StatefulWidget {
   const PaymentDetailsViewBody({super.key});
 
   @override
+  State<PaymentDetailsViewBody> createState() => _PaymentDetailsViewBodyState();
+}
+
+class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          PaymentMethodsListView(),
-          CustomCreditCard(),
-          SizedBox(
-            height: 24,
+    return CustomScrollView(
+      slivers: [
+        const SliverToBoxAdapter(
+          child: PaymentMethodsListView(),
+        ),
+        SliverToBoxAdapter(
+          child: CustomCreditCard(
+            autovalidateMode: autovalidateMode,
+            formKey: formKey,
           ),
-          CustomButton(text: 'Pay')
-        ],
-      ),
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: CustomButton(
+                  text: 'Pay',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                    }
+                  },
+                ),
+              )),
+        ),
+      ],
     );
   }
 }
