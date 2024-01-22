@@ -8,8 +8,13 @@ class PaymentDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: 'Payment Details'),
-      body: PaymentDetailsViewBody(),
+      appBar: buildAppBar(
+        title: 'Payment Details',
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      body: const PaymentDetailsViewBody(),
     );
   }
 }
